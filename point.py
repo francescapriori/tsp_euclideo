@@ -6,7 +6,7 @@ class Point:
         self.y = y
 
     def __repr__(self):
-        return f"Point({self.x}, {self.y})"
+        return f"({self.x}, {self.y})"
 
     def distance_to(self, pj):
         return math.sqrt((self.x - pj.x) ** 2 + (self.y - pj.y) ** 2)
