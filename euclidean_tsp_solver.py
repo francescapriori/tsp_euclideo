@@ -2,7 +2,7 @@ import itertools
 
 class EuclideanTSPSolver:
 
-    def minimum_hamiltonian_cycle_euclidean_tsp(self, points):
+    def minimum_cycle_euclidean_tsp(self, points):
         n = len(points)
         C = {((0,), 0): 0} #C(S={p1},p1)=0
         prev = {}
@@ -29,13 +29,13 @@ class EuclideanTSPSolver:
                 last = pf
         return optimal_cost, C, prev, last
 
-    def minimum_chain_cycle_euclidean_tsp(self, S, prev, last):
+    def minimum_chain_euclidean_tsp(self, S, prev, last):
         if last == 0: # last == p1
             return [0]
         else:
             pk = prev[(S, last)]
             subset_without_last = tuple(p for p in S if p != last)
-            path = self.minimum_chain_cycle_euclidean_tsp(subset_without_last, prev, pk)
+            path = self.minimum_chain_euclidean_tsp(subset_without_last, prev, pk)
             path.append(last)
         
         return path
